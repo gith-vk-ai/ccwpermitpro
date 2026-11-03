@@ -30,8 +30,8 @@ export default function CookiesPage() {
           the site, for example how many people complete the quiz.
         </li>
         <li>
-          <strong>Meta Pixel</strong> — to measure the performance of our ads on Facebook and
-          Instagram and to show relevant ads.
+          <strong>Advertising network tags (such as NewsBreak and Revcontent)</strong> — to measure
+          the performance of our ads on those networks.
         </li>
       </ul>
       <p>
@@ -48,8 +48,8 @@ export default function CookiesPage() {
       <p>
         If your browser sends a Global Privacy Control (GPC) signal, we treat it as a request to opt
         out and do not load our analytics or advertising tools. You can also block or delete cookies
-        through your browser, and opt out of interest-based ads via your Meta and Google ad
-        settings.
+        through your browser, and opt out of interest-based ads via your Google ad settings and
+        the settings of the apps and websites where you see our ads.
       </p>
       <h2>Contact</h2>
       <p>

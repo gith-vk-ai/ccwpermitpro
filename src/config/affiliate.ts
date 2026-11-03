@@ -23,7 +23,7 @@ export const affiliate = {
    */
   subId: {
     param: null as string | null,
-    fields: ["utm_campaign", "utm_content", "ad_id"] as const,
+    fields: ["utm_source", "utm_campaign", "widget_id", "ad_id"] as const,
     separator: "_",
     maxLength: 100,
   },

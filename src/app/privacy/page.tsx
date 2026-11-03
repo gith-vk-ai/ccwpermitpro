@@ -37,7 +37,8 @@ export default function PrivacyPage() {
       </p>
       <h2>Analytics, advertising, and campaign data</h2>
       <p>
-        We may use Google Analytics 4, Google Tag Manager, and the Meta Pixel. If your browser sends
+        We may use Google Analytics 4 and Google Tag Manager, including conversion tags from the
+        advertising networks we work with (such as NewsBreak and Revcontent). If your browser sends
         a Global Privacy Control (GPC) signal, we don&apos;t load these tools. We also read campaign parameters from the link that brought you here (for
         example, UTM tags or ad identifiers) to measure which campaigns perform well. Details are in
         our <a href="/cookies/">Cookie Policy</a>.

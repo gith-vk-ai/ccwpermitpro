@@ -9,7 +9,7 @@ Stejná kostra jako [languagesup](https://github.com/gith-vk-ai/languagesup).
 | Co | Soubor |
 | --- | --- |
 | Affiliate odkaz, sub-ID | `src/config/affiliate.ts` |
-| Meta Pixel / GA4 / GTM ID, consent banner | `src/config/tracking.ts` |
+| GTM / GA4 ID, sledované URL parametry, consent banner | `src/config/tracking.ts` |
 | Otázky a odpovědi kvízu | `src/config/quiz.ts` |
 | Texty výsledků (personalizace) | `src/lib/personalize.ts` |
 | Kontaktní e-mail, datum právních textů | `src/config/site.ts` |
@@ -26,7 +26,16 @@ Texty záměrně neuvádějí konkrétní požadavky jednotlivých států (liš
 
 ### Analytika
 Události: `PageView`, `QuizStart`, `QuizStepViewed`, `QuizAnswered`, `QuizCompleted`, `ResultsViewed`, `OutboundAffiliateClick`.
-Každá nese zachycené UTM / `campaign_id` / `adset_id` / `ad_id` / `fbclid` z první návštěvy v session.
+Každá nese zachycené UTM / `campaign_id` / `ad_id` / `click_id` / Revcontent `boost_id`, `widget_id`, `content_id`, `rc_uuid` z první návštěvy v session.
+
+### Zdroje provozu: NewsBreak + Revcontent (native)
+Pixely obou sítí se vkládají jako tagy v **Google Tag Manageru** (`gtmId` v `src/config/tracking.ts`), spouštěné událostmi z `dataLayer`
+(`PageView`, `QuizCompleted`, `OutboundAffiliateClick` = konverze na webu). Samotné prodeje se do sítí posílají postbackem z affiliate sítě.
+
+Příklad cílové URL v Revcontent:
+`https://ccwpermitpro.com/?utm_source=revcontent&utm_campaign={boost_id}&boost_id={boost_id}&widget_id={widget_id}&content_id={content_id}&rc_uuid={uuid}`
+
+U NewsBreak použij `utm_source=newsbreak` a makra z NewsBreak Ad Manageru namapuj na `campaign_id`, `ad_id`, `click_id`.
 
 ## Vývoj
 

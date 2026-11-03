@@ -35,7 +35,6 @@ declare global {
   interface Window {
     dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
-    fbq?: ((...args: unknown[]) => void) & { callMethod?: unknown; queue?: unknown[] };
   }
 }
 
@@ -106,10 +105,6 @@ function send(name: EventName, params: EventParams): void {
       : params;
     window.gtag("event", ga4Names[name], ga);
   }
-  if (tracking.metaPixelId && window.fbq) {
-    if (name === "PageView") window.fbq("track", "PageView");
-    else window.fbq("trackCustom", name, params);
-  }
 }
 
 function loadScript(src: string): void {
@@ -138,27 +133,5 @@ function loadProviders(): void {
     window.gtag("js", new Date());
     window.gtag("config", tracking.ga4Id, { send_page_view: false });
     loadScript(`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(tracking.ga4Id)}`);
-  }
-
-  if (tracking.metaPixelId && !window.fbq) {
-    type FbqStub = ((...args: unknown[]) => void) & {
-      callMethod?: (...args: unknown[]) => void;
-      queue: unknown[];
-      loaded: boolean;
-      version: string;
-      push: unknown;
-    };
-    const fbq = function (...args: unknown[]) {
-      if (fbq.callMethod) fbq.callMethod(...args);
-      else fbq.queue.push(args);
-    } as FbqStub;
-    fbq.queue = [];
-    fbq.loaded = true;
-    fbq.version = "2.0";
-    fbq.push = fbq;
-    window.fbq = fbq;
-    (window as unknown as { _fbq: unknown })._fbq = fbq;
-    loadScript("https://connect.facebook.net/en_US/fbevents.js");
-    window.fbq("init", tracking.metaPixelId);
   }
 }
