@@ -7,12 +7,12 @@
  *   guessed or made-up tracking URL here.
  * - `previewUrl`: plain, non-affiliate destination used while `liveUrl` is
  *   empty, or whenever the site runs with NEXT_PUBLIC_AFFILIATE_MODE=preview.
- *   PLACEHOLDER — replace with the partner's homepage once it is chosen.
+ *   Partner: Countrywide Concealed.
  */
 export const affiliate = {
   provider: "tbd", // informational: which network the live link belongs to
   liveUrl: "",
-  previewUrl: "https://www.uscca.com/",
+  previewUrl: "https://countrywideconcealed.com/",
   openInNewTab: true,
 
   /**
